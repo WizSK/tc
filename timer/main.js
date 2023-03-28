@@ -18,42 +18,18 @@ let intervId;
 function tick() {
   intervId = setInterval(() => {
     let timeR = gt(traker++);
-    // for sec
-    let sec, min, hour;
 
-    if (timeR.sec < 10) {
-      sec = `0${timeR.sec}`;
-    } else {
-      sec = `${timeR.sec}`;
-    }
-    // for min
-    if (timeR.min < 10) {
-      min = `0${timeR.min}`;
-    } else {
-      min = `${timeR.min}`;
-    }
+    main.innerText = `${leadZero(timeR.hour)}:${leadZero(timeR.min)}:${leadZero(timeR.sec)}`;
 
-    // for hour
-    if (timeR.hour < 10) {
-      hour = `0${timeR.hour}`;
-    } else {
-      hour = `${timeR.hour}`;
-    }
-
-    let timeF = `${hour}:${min}:${sec}`;
-
-
-    main.innerText = timeF;
-    if (traker > 4) {
     let timeN = new Date();
     if (timeN.getHours() > 12) {
-      time.innerText = `${leadZero(timeN.getHours() - 12)}:${leadZero(timeN.getMinutes())} PM`;
+      time.innerText = `${leadZero(timeN.getHours() - 12)}:${leadZero(
+        timeN.getMinutes()
+      )} PM`;
     } else {
-      time.innerText = `${leadZero(timeN.getHours())}:${leadZero(timeN.getMinutes())}} AM`;
-    }}
-    else{
-      time.innerText = "[space] to pause and [r] to reset timmer"
+      time.innerText = `${leadZero(timeN.getHours())}:${leadZero(timeN.getMinutes())} AM`;
     }
+
   }, 1000);
 }
 
@@ -66,7 +42,16 @@ function leadZero(num) {
   }
 }
 
+let shownHelp = false;
+function showHelp() {
+  // if (!shownHelp && traker < 4) {
+  time.innerText = "[space] to pause and [r] to reset timmer";
+  showHelp == true;
+  // }
+}
+
 tick()
+showHelp()
 
 
 addEventListener("keypress", (e) => {
@@ -82,8 +67,8 @@ addEventListener("keypress", (e) => {
   else if (e.key == 'r' || e.key == 'R') {
     
     traker = 0;
+    time.innerText = "Resetting"
     if (time.textContent == "Paused") {
-      time.innerText = "Resetting"
       tick()
     }
   }

@@ -26,26 +26,14 @@ let intervId = setInterval(() => {
   // for sec
   let sec, min, hour;
 
-  if (timeN.getSeconds() < 10) {
-    sec = `0${timeN.getSeconds()}`;
-  } else {
-    sec = `${timeN.getSeconds()}`;
-  }
+  sec = `${leadZero(timeN.getSeconds())}`;
   // for min
-  if (timeN.getMinutes() < 10) {
-    min = `0${timeN.getMinutes()}`;
-  } else {
-    min = `${timeN.getMinutes()}`;
-  }
+  min = `${leadZero(timeN.getMinutes())}`;
   // for hour
-  if (timeN.getHours() < 10) {
-    hour = `0${timeN.getHours() + 1}`;
+  if (timeN.getHours() > 12) {
+    hour = `${leadZero(timeN.getHours() - 12)}`;
   } else {
-    if (timeN.getHours() > 12) {
-      hour = `${timeN.getHours() - 12}`;
-    } else {
-      hour = `${timeN.getHours() + 1}`;
-    }
+    hour = `${leadZero(timeN.getHours())}`;
   }
 
   let timeF;
@@ -57,3 +45,11 @@ let intervId = setInterval(() => {
   main.innerText = timeF;
 }, 1000);
 
+function leadZero(num) {
+  if (num < 10) {
+    return `0${num}`
+  }
+  else {
+    return num;
+  }
+}
