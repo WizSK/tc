@@ -1,0 +1,29 @@
+@font-face {
+    font-family: jet;
+    src: url(JetBrainsMono-Bold.ttf);
+  }
+
+body {
+    font-family: jet;
+    font-size: 15rem;
+    color: #f1f1f1;
+    background-color: #1d1d1d;
+}
+
+#con {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 97vh;
+    width: 99vw;
+}
+
+p {
+    margin: 1px auto;
+}
+
+#foo {
+    font-size: 2rem;
+    margin-top: 16rem;
+}
