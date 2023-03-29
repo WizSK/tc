@@ -67,6 +67,7 @@ addEventListener("keypress", (e) => {
   else if (e.key == 'r' || e.key == 'R') {
     
     traker = 0;
+    clearInterval(intervId);
     time.innerText = "Resetting"
     tick()
   }
