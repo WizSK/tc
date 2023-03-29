@@ -68,8 +68,6 @@ addEventListener("keypress", (e) => {
     
     traker = 0;
     time.innerText = "Resetting"
-    if (time.textContent == "Paused") {
-      tick()
-    }
+    tick()
   }
 });
